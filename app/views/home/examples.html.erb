@@ -1,0 +1,118 @@
+<div class='container-fluid my-3'>
+    <h3>Class Schedule Example</h3>
+</div>
+
+<script>
+    function displaySolution() {
+        var offset = new Date().getTimezoneOffset();
+
+        solution = [
+            {text: "Physics 7", start_date: "2021-06-01 8:00", end_date: "2021-06-01 9:30"},
+            {text: "Physics 7", start_date: "2021-06-03 8:00", end_date: "2021-06-03 9:30"},
+            {text: "Discussion", start_date: "2021-05-31 9:00", end_date: "2021-05-31 10:00"},
+            {text: "Lunch", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:00"},
+            {text: "Lunch", start_date: "2021-06-01 11:00", end_date: "2021-06-01 12:00"},
+            {text: "Lunch", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:00"},
+            {text: "Lunch", start_date: "2021-06-03 11:00", end_date: "2021-06-03 12:00"},
+            {text: "Lunch", start_date: "2021-06-04 11:00", end_date: "2021-06-04 12:00"},
+            {text: "English 3", start_date: "2021-05-31 12:00", end_date: "2021-05-31 13:00"},
+            {text: "English 3", start_date: "2021-06-02 12:00", end_date: "2021-06-02 13:00"},
+            {text: "English 3", start_date: "2021-06-04 12:00", end_date: "2021-06-04 13:00"},
+            {text: "Compsci 101", start_date: "2021-05-31 13:00", end_date: "2021-05-31 14:00"},
+            {text: "Compsci 101", start_date: "2021-06-02 13:00", end_date: "2021-06-02 14:00"},
+            {text: "Compsci 101", start_date: "2021-06-04 13:00", end_date: "2021-06-04 14:00"},
+            {text: "Music 25", start_date: "2021-06-01 13:00", end_date: "2021-06-01 15:00"},
+            {text: "Music 25", start_date: "2021-06-03 13:00", end_date: "2021-06-03 15:00"}
+        ];
+
+        fetch("<%= show_path %>", {
+            method: "POST", 
+            headers: {
+                'Content-Type': 'application/json'
+        },
+            body: JSON.stringify(solution)
+        }).then(async res => {
+            const text = await res.text();
+            if (res.status == 200) {
+                var iframe = document.getElementById('solution_scheduler');
+                iframe.contentWindow.document.open();
+                iframe.contentWindow.document.write(text);
+                iframe.contentWindow.document.close();
+            }
+        });
+    }
+
+    scheduler.clearAll();
+    scheduler.config.readonly_form = true;
+    scheduler.attachEvent("onBeforeDrag",function(){return false;})
+    scheduler.attachEvent("onClick",function(){return false;})
+    scheduler.config.details_on_dblclick = true;
+    scheduler.config.dblclick_create = false;
+    scheduler.parse([
+        {text: "Physics 7", start_date: "2021-06-01 8:00", end_date: "2021-06-01 9:30", color: hashColor("Physics 7")},
+        {text: "Physics 7", start_date: "2021-06-03 8:00", end_date: "2021-06-03 9:30", color: hashColor("Physics 7")},
+        {text: "Physics 7", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:30", color: hashColor("Physics 7")},
+        {text: "Physics 7", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:30", color: hashColor("Physics 7")},
+        {text: "Physics 7", start_date: "2021-06-01 11:00", end_date: "2021-06-01 12:30", color: hashColor("Physics 7")},
+        {text: "Physics 7", start_date: "2021-06-03 11:00", end_date: "2021-06-03 12:30", color: hashColor("Physics 7")},
+        {text: "Discussion", start_date: "2021-05-31 9:00", end_date: "2021-05-31 10:00", color: hashColor("Discussion")},
+        {text: "Discussion", start_date: "2021-06-01 9:00", end_date: "2021-06-01 10:00", color: hashColor("Discussion")},
+        {text: "Discussion", start_date: "2021-06-02 9:00", end_date: "2021-06-02 10:00", color: hashColor("Discussion")},
+        {text: "Discussion", start_date: "2021-06-03 9:00", end_date: "2021-06-03 10:00", color: hashColor("Discussion")},
+        {text: "Discussion", start_date: "2021-06-04 9:00", end_date: "2021-06-04 10:00", color: hashColor("Discussion")},
+        {text: "Lunch", start_date: "2021-05-31 10:00", end_date: "2021-05-31 11:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-06-01 10:00", end_date: "2021-06-01 11:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-06-02 10:00", end_date: "2021-06-02 11:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-06-03 10:00", end_date: "2021-06-03 11:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-06-04 10:00", end_date: "2021-06-04 11:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-06-01 11:00", end_date: "2021-06-01 12:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-06-03 11:00", end_date: "2021-06-03 12:00", color: hashColor("Lunch")},
+        {text: "Lunch", start_date: "2021-06-04 11:00", end_date: "2021-06-04 12:00", color: hashColor("Lunch")},
+        {text: "English 3", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:00", color: hashColor("English 3")},
+        {text: "English 3", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:00", color: hashColor("English 3")},
+        {text: "English 3", start_date: "2021-06-04 11:00", end_date: "2021-06-04 12:00", color: hashColor("English 3")},
+        {text: "English 3", start_date: "2021-05-31 12:00", end_date: "2021-05-31 13:00", color: hashColor("English 3")},
+        {text: "English 3", start_date: "2021-06-02 12:00", end_date: "2021-06-02 13:00", color: hashColor("English 3")},
+        {text: "English 3", start_date: "2021-06-04 12:00", end_date: "2021-06-04 13:00", color: hashColor("English 3")},
+        {text: "English 3", start_date: "2021-05-31 13:00", end_date: "2021-05-31 14:00", color: hashColor("English 3")},
+        {text: "English 3", start_date: "2021-06-02 13:00", end_date: "2021-06-02 14:00", color: hashColor("English 3")},
+        {text: "English 3", start_date: "2021-06-04 13:00", end_date: "2021-06-04 14:00", color: hashColor("English 3")},
+        {text: "Compsci 101", start_date: "2021-05-31 13:00", end_date: "2021-05-31 14:00", color: hashColor("Compsci 101")},
+        {text: "Compsci 101", start_date: "2021-06-02 13:00", end_date: "2021-06-02 14:00", color: hashColor("Compsci 101")},
+        {text: "Compsci 101", start_date: "2021-06-04 13:00", end_date: "2021-06-04 14:00", color: hashColor("Compsci 101")},
+        {text: "Music 25", start_date: "2021-06-01 09:00", end_date: "2021-06-01 11:00", color: hashColor("Music 25")},
+        {text: "Music 25", start_date: "2021-06-03 09:00", end_date: "2021-06-03 11:00", color: hashColor("Music 25")},
+        {text: "Music 25", start_date: "2021-06-01 11:00", end_date: "2021-06-01 13:00", color: hashColor("Music 25")},
+        {text: "Music 25", start_date: "2021-06-03 11:00", end_date: "2021-06-03 13:00", color: hashColor("Music 25")},
+        {text: "Music 25", start_date: "2021-06-01 13:00", end_date: "2021-06-01 15:00", color: hashColor("Music 25")},
+        {text: "Music 25", start_date: "2021-06-03 13:00", end_date: "2021-06-03 15:00", color: hashColor("Music 25")},
+    ],"json");
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 min-vh-100">
+            <div class="card border-primary h-100">
+                <div class="card-header bg-primary text-light">Set Schedules</div>
+                <div class="card-body">
+                    <%= render partial: "scheduler", locals: {schedule_id: "example_schedule"} %>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 my-auto">
+            <div class="card">
+                <button id="solve_btn" type="button" class="btn btn-lg btn-block btn-outline-primary align-self-center" onclick="displaySolution();">Solve!</button>
+            </div>
+        </div>
+        <div class="col-md-5 min-vh-100">
+            <div class="card border-primary h-100">
+                <div class="card-header bg-primary text-light">Solution</div>
+                <div class="card-body">
+                    <iframe id="solution_scheduler" width="100%" height="100%" frameBorder="0">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<div id="<%= schedule_id %>" class="dhx_cal_container vh-100 w-100">
+    <div hidden class="dhx_cal_navline"></div>
+    <div class="dhx_cal_header"></div>
+    <div class="dhx_cal_data"></div>
+</div>
+ 
+<script>
+    scheduler.config.limit_start = new Date(2021,4,31);
+    scheduler.config.limit_end = new Date(2021,5,7);
+    scheduler.config.lightbox.sections = [
+        {name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
+        {name:"recurring", type:"recurring", map_to:"rec_type", button:"recurring", 
+        form:"my_recurring_form"},
+        {name:"time", height:72, type:"time", map_to:"auto"}
+    ];
+    scheduler.templates.week_scale_date = function(date){
+        var format = scheduler.date.date_to_str("%l");
+        return format(date);
+    };
+
+    function hashColor(input) {
+        var hash = 0;
+        for (var i = 0; i < input.length; i += 1) {
+            hash = input.charCodeAt(i) + ((hash << 5) - hash);
+            hash = hash & hash;
+        }
+        var color = '#';
+        for (var i = 0; i < 3; i += 1) {
+            var value = (hash >> (i * 8)) & 255;
+            color += ('00' + value.toString(16)).substr(-2);
+        }
+        return color;
+    }
+    scheduler.attachEvent("onEventAdded",function(id,ev){
+        scheduler.getEvent(id).color = hashColor(ev.text);
+        scheduler.updateEvent(id);
+        return true;
+    });
+    scheduler.attachEvent("onEventChanged",function(id,ev){
+        scheduler.getEvent(id).color = hashColor(ev.text);
+        scheduler.updateEvent(id);
+        return true;
+    });
+    scheduler.attachEvent("onLightbox", function (id){
+        document.getElementsByName("date_of_end")[0].value = "06.07.2021";
+        return true;
+    });
+    scheduler.attachEvent("onBeforeEventChanged",function(dev){
+        var parts = scheduler.getState().drag_id.toString().split("#");
+        if (parts.length > 1) {
+    
+            var series = this.getEvent(parts[0]);
+    
+            series.start_date.setHours(dev.start_date.getHours());
+            series.start_date.setMinutes(dev.start_date.getMinutes());
+            series.event_length = (dev.end_date - dev.start_date) / 1000;
+    
+            setTimeout(function(){
+                scheduler.addEvent(series);
+            }, 1);
+    
+            return false;
+        }
+        return true;
+    });
+    scheduler.config.details_on_dblclick = true;
+	scheduler.config.details_on_create = true;
+    scheduler.xy.nav_height = 0;
+    scheduler.init("<%= schedule_id %>", new Date(2021,4,31), "week");
+</script>
+
+<div hidden>
+    <div class="dhx_form_repeat" id="my_recurring_form"> 
+    <form>
+        <input type="hidden" name="repeat" value="week" />
+        <div id="dhx_repeat_week">
+        Repeat on days:<br />
+
+        <label><input type="checkbox" name="week_day" value="1" />Monday</label>
+        <label><input type="checkbox" name="week_day" value="2" />Tuesday</label>
+        <label><input type="checkbox" name="week_day" value="3" />Wednesday</label>
+        <label><input type="checkbox" name="week_day" value="4" />Thursday</label>
+        <label><input type="checkbox" name="week_day" value="5" />Friday</label>
+        <label><input type="checkbox" name="week_day" value="6" />Saturday</label>
+        <label><input type="checkbox" name="week_day" value="0" />Sunday</label>
+        <input type="hidden" name="week_count" value="1" />
+        </div>
+    
+        <input hidden name="end"/>
+        <input hidden name="end"/>
+        <input hidden name="end" checked=""/>
+        <input hidden type="text" name="date_of_end" value="undefined"/>
+    </form>
+    </div>
+</div>

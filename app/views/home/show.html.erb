@@ -1,0 +1,28 @@
+<%= render partial: "scheduler", locals: {schedule_id: "show_schedule"} %>
+
+<script>
+    function hashColor(input) {
+        var hash = 0;
+        for (var i = 0; i < input.length; i += 1) {
+            hash = input.charCodeAt(i) + ((hash << 5) - hash);
+            hash = hash & hash;
+        }
+        var color = '#';
+        for (var i = 0; i < 3; i += 1) {
+            var value = (hash >> (i * 8)) & 255;
+            color += ('00' + value.toString(16)).substr(-2);
+        }
+        return color;
+    }
+    //TODO: populate from instance variables via controller
+    scheduler.parse([
+        <% @hashes.each_with_index do |hash, i| %>
+            <% text = "{text: \"#{hash[:text]}\", start_date: \"#{hash[:start_date]}\", end_date: \"#{hash[:end_date]}\", color: hashColor(\"#{hash[:text]}\")}" %>
+            <% if i < @hashes.length - 1 %>
+                <% text = text + "," %>
+            <% end %>
+            <%= text.html_safe %>
+        <% end %>
+    ],"json");
+    scheduler.config.readonly = true;
+</script>
