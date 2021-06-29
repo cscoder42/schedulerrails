@@ -63,6 +63,18 @@
         }
         return true;
     });
+    scheduler.attachEvent("onBeforeDrag", function(){
+        if (scheduler.config.readonly_form) {
+            return false;
+        }
+        return true;
+    });
+    scheduler.attachEvent("onClick", function(){
+        if (scheduler.config.readonly_form) {
+            return false;
+        }
+        return true;
+    });
     scheduler.config.details_on_dblclick = true;
 	scheduler.config.details_on_create = true;
     scheduler.xy.nav_height = 0;

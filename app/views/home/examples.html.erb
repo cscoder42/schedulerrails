@@ -42,53 +42,68 @@
         });
     }
 
-    scheduler.clearAll();
-    scheduler.config.readonly_form = true;
-    scheduler.attachEvent("onBeforeDrag",function(){return false;})
-    scheduler.attachEvent("onClick",function(){return false;})
-    scheduler.config.details_on_dblclick = true;
-    scheduler.config.dblclick_create = false;
-    scheduler.parse([
-        {text: "Physics 7", start_date: "2021-06-01 8:00", end_date: "2021-06-01 9:30", color: hashColor("Physics 7")},
-        {text: "Physics 7", start_date: "2021-06-03 8:00", end_date: "2021-06-03 9:30", color: hashColor("Physics 7")},
-        {text: "Physics 7", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:30", color: hashColor("Physics 7")},
-        {text: "Physics 7", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:30", color: hashColor("Physics 7")},
-        {text: "Physics 7", start_date: "2021-06-01 11:00", end_date: "2021-06-01 12:30", color: hashColor("Physics 7")},
-        {text: "Physics 7", start_date: "2021-06-03 11:00", end_date: "2021-06-03 12:30", color: hashColor("Physics 7")},
-        {text: "Discussion", start_date: "2021-05-31 9:00", end_date: "2021-05-31 10:00", color: hashColor("Discussion")},
-        {text: "Discussion", start_date: "2021-06-01 9:00", end_date: "2021-06-01 10:00", color: hashColor("Discussion")},
-        {text: "Discussion", start_date: "2021-06-02 9:00", end_date: "2021-06-02 10:00", color: hashColor("Discussion")},
-        {text: "Discussion", start_date: "2021-06-03 9:00", end_date: "2021-06-03 10:00", color: hashColor("Discussion")},
-        {text: "Discussion", start_date: "2021-06-04 9:00", end_date: "2021-06-04 10:00", color: hashColor("Discussion")},
-        {text: "Lunch", start_date: "2021-05-31 10:00", end_date: "2021-05-31 11:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-06-01 10:00", end_date: "2021-06-01 11:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-06-02 10:00", end_date: "2021-06-02 11:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-06-03 10:00", end_date: "2021-06-03 11:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-06-04 10:00", end_date: "2021-06-04 11:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-06-01 11:00", end_date: "2021-06-01 12:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-06-03 11:00", end_date: "2021-06-03 12:00", color: hashColor("Lunch")},
-        {text: "Lunch", start_date: "2021-06-04 11:00", end_date: "2021-06-04 12:00", color: hashColor("Lunch")},
-        {text: "English 3", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:00", color: hashColor("English 3")},
-        {text: "English 3", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:00", color: hashColor("English 3")},
-        {text: "English 3", start_date: "2021-06-04 11:00", end_date: "2021-06-04 12:00", color: hashColor("English 3")},
-        {text: "English 3", start_date: "2021-05-31 12:00", end_date: "2021-05-31 13:00", color: hashColor("English 3")},
-        {text: "English 3", start_date: "2021-06-02 12:00", end_date: "2021-06-02 13:00", color: hashColor("English 3")},
-        {text: "English 3", start_date: "2021-06-04 12:00", end_date: "2021-06-04 13:00", color: hashColor("English 3")},
-        {text: "English 3", start_date: "2021-05-31 13:00", end_date: "2021-05-31 14:00", color: hashColor("English 3")},
-        {text: "English 3", start_date: "2021-06-02 13:00", end_date: "2021-06-02 14:00", color: hashColor("English 3")},
-        {text: "English 3", start_date: "2021-06-04 13:00", end_date: "2021-06-04 14:00", color: hashColor("English 3")},
-        {text: "Compsci 101", start_date: "2021-05-31 13:00", end_date: "2021-05-31 14:00", color: hashColor("Compsci 101")},
-        {text: "Compsci 101", start_date: "2021-06-02 13:00", end_date: "2021-06-02 14:00", color: hashColor("Compsci 101")},
-        {text: "Compsci 101", start_date: "2021-06-04 13:00", end_date: "2021-06-04 14:00", color: hashColor("Compsci 101")},
-        {text: "Music 25", start_date: "2021-06-01 09:00", end_date: "2021-06-01 11:00", color: hashColor("Music 25")},
-        {text: "Music 25", start_date: "2021-06-03 09:00", end_date: "2021-06-03 11:00", color: hashColor("Music 25")},
-        {text: "Music 25", start_date: "2021-06-01 11:00", end_date: "2021-06-01 13:00", color: hashColor("Music 25")},
-        {text: "Music 25", start_date: "2021-06-03 11:00", end_date: "2021-06-03 13:00", color: hashColor("Music 25")},
-        {text: "Music 25", start_date: "2021-06-01 13:00", end_date: "2021-06-01 15:00", color: hashColor("Music 25")},
-        {text: "Music 25", start_date: "2021-06-03 13:00", end_date: "2021-06-03 15:00", color: hashColor("Music 25")},
-    ],"json");
+    function initExample() {
+        function hashColor(input) {
+            var hash = 0;
+            for (var i = 0; i < input.length; i += 1) {
+                hash = input.charCodeAt(i) + ((hash << 5) - hash);
+                hash = hash & hash;
+            }
+            var color = '#';
+            for (var i = 0; i < 3; i += 1) {
+                var value = (hash >> (i * 8)) & 255;
+                color += ('00' + value.toString(16)).substr(-2);
+            }
+            return color;
+        }
+        scheduler.clearAll();
+        scheduler.config.readonly_form = true;
+        scheduler.config.dblclick_create = false;
+        scheduler.parse([
+            {text: "Physics 7", start_date: "2021-06-01 8:00", end_date: "2021-06-01 9:30", color: hashColor("Physics 7")},
+            {text: "Physics 7", start_date: "2021-06-03 8:00", end_date: "2021-06-03 9:30", color: hashColor("Physics 7")},
+            {text: "Physics 7", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:30", color: hashColor("Physics 7")},
+            {text: "Physics 7", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:30", color: hashColor("Physics 7")},
+            {text: "Physics 7", start_date: "2021-06-01 11:00", end_date: "2021-06-01 12:30", color: hashColor("Physics 7")},
+            {text: "Physics 7", start_date: "2021-06-03 11:00", end_date: "2021-06-03 12:30", color: hashColor("Physics 7")},
+            {text: "Discussion", start_date: "2021-05-31 9:00", end_date: "2021-05-31 10:00", color: hashColor("Discussion")},
+            {text: "Discussion", start_date: "2021-06-01 9:00", end_date: "2021-06-01 10:00", color: hashColor("Discussion")},
+            {text: "Discussion", start_date: "2021-06-02 9:00", end_date: "2021-06-02 10:00", color: hashColor("Discussion")},
+            {text: "Discussion", start_date: "2021-06-03 9:00", end_date: "2021-06-03 10:00", color: hashColor("Discussion")},
+            {text: "Discussion", start_date: "2021-06-04 9:00", end_date: "2021-06-04 10:00", color: hashColor("Discussion")},
+            {text: "Lunch", start_date: "2021-05-31 10:00", end_date: "2021-05-31 11:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-06-01 10:00", end_date: "2021-06-01 11:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-06-02 10:00", end_date: "2021-06-02 11:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-06-03 10:00", end_date: "2021-06-03 11:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-06-04 10:00", end_date: "2021-06-04 11:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-06-01 11:00", end_date: "2021-06-01 12:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-06-03 11:00", end_date: "2021-06-03 12:00", color: hashColor("Lunch")},
+            {text: "Lunch", start_date: "2021-06-04 11:00", end_date: "2021-06-04 12:00", color: hashColor("Lunch")},
+            {text: "English 3", start_date: "2021-05-31 11:00", end_date: "2021-05-31 12:00", color: hashColor("English 3")},
+            {text: "English 3", start_date: "2021-06-02 11:00", end_date: "2021-06-02 12:00", color: hashColor("English 3")},
+            {text: "English 3", start_date: "2021-06-04 11:00", end_date: "2021-06-04 12:00", color: hashColor("English 3")},
+            {text: "English 3", start_date: "2021-05-31 12:00", end_date: "2021-05-31 13:00", color: hashColor("English 3")},
+            {text: "English 3", start_date: "2021-06-02 12:00", end_date: "2021-06-02 13:00", color: hashColor("English 3")},
+            {text: "English 3", start_date: "2021-06-04 12:00", end_date: "2021-06-04 13:00", color: hashColor("English 3")},
+            {text: "English 3", start_date: "2021-05-31 13:00", end_date: "2021-05-31 14:00", color: hashColor("English 3")},
+            {text: "English 3", start_date: "2021-06-02 13:00", end_date: "2021-06-02 14:00", color: hashColor("English 3")},
+            {text: "English 3", start_date: "2021-06-04 13:00", end_date: "2021-06-04 14:00", color: hashColor("English 3")},
+            {text: "Compsci 101", start_date: "2021-05-31 13:00", end_date: "2021-05-31 14:00", color: hashColor("Compsci 101")},
+            {text: "Compsci 101", start_date: "2021-06-02 13:00", end_date: "2021-06-02 14:00", color: hashColor("Compsci 101")},
+            {text: "Compsci 101", start_date: "2021-06-04 13:00", end_date: "2021-06-04 14:00", color: hashColor("Compsci 101")},
+            {text: "Music 25", start_date: "2021-06-01 09:00", end_date: "2021-06-01 11:00", color: hashColor("Music 25")},
+            {text: "Music 25", start_date: "2021-06-03 09:00", end_date: "2021-06-03 11:00", color: hashColor("Music 25")},
+            {text: "Music 25", start_date: "2021-06-01 11:00", end_date: "2021-06-01 13:00", color: hashColor("Music 25")},
+            {text: "Music 25", start_date: "2021-06-03 11:00", end_date: "2021-06-03 13:00", color: hashColor("Music 25")},
+            {text: "Music 25", start_date: "2021-06-01 13:00", end_date: "2021-06-01 15:00", color: hashColor("Music 25")},
+            {text: "Music 25", start_date: "2021-06-03 13:00", end_date: "2021-06-03 15:00", color: hashColor("Music 25")},
+        ],"json");
+    }
+
+    initExample();
+    window.addEventListener('load', initExample);
 </script>
 
 <div class="container-fluid">
