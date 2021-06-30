@@ -57,8 +57,7 @@
             return color;
         }
         scheduler.clearAll();
-        scheduler.config.readonly_form = true;
-        scheduler.config.dblclick_create = false;
+        scheduler.config.readonly = true;
         scheduler.parse([
             {text: "Physics 7", start_date: "2021-06-01 8:00", end_date: "2021-06-01 9:30", color: hashColor("Physics 7")},
             {text: "Physics 7", start_date: "2021-06-03 8:00", end_date: "2021-06-03 9:30", color: hashColor("Physics 7")},
